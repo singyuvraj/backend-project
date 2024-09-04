@@ -9,7 +9,7 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "description": "",
+  "description": "This is a backend project with javascript",
   "devDependencies": {
     "nodemon": "^3.1.4",
     "prettier": "^3.3.3"

@@ -1,5 +1,9 @@
 import { v2 as cloudinary } from 'cloudinary';
-import fs from "fs"
+import fs from "fs";
+import dotenv from 'dotenv';
+
+// // Load environment variables from .env file
+dotenv.config();
 
     // Configuration
     cloudinary.config({ 
@@ -18,16 +22,18 @@ import fs from "fs"
           resource_type: "auto"
         })
         //file has been uploaded successfully
-        console.log("file is uploaded on cloudinary",
-          response.url);
+        // console.log("file is uploaded on cloudinary",
+        //   response.url);
+        fs.unlinkSync(localFilePath);
         return response;
 
       } catch (error) {
-        fs.unlinkSync(localFilePath) // remove the locally saved temporary file as the upload operation got failed
+        console.error("Error uploading file to Cloudinary:", error); // remove the locally saved temporary file as the upload operation got failed
+        // await fs.promises.unlink(localFilePath);
         return null;
       }
-    }
+    };
 
 
 
-    export {uploadOnCloudinary}
+    export { uploadOnCloudinary };
